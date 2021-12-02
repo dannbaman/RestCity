@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -40,8 +41,7 @@ public class TC001_Demo1_Get_City {
 			//print response in console window
 			String responseBody = response.getBody().asString();
 			System.out.println("Response body is: "+ responseBody);
-			
-			//status code
+					//status code
 			int statusCode = response.getStatusCode();
 			System.out.println("status code is: "+ statusCode);
 			Assert.assertEquals(statusCode, 200);
@@ -49,6 +49,7 @@ public class TC001_Demo1_Get_City {
 			String statusLine= response.getStatusLine();
 			System.out.println(statusLine);
 			Assert.assertEquals(statusLine, "HTTP/1.1 200 OK");
+			Assert.assertTrue(responseBody.contains("Russia"));
 			
 	    }
 	}
@@ -78,5 +79,22 @@ public class TC001_Demo1_Get_City {
 			Assert.assertTrue(true);
 		
 	}
+}
+	@Test(priority = 3)
+	public void  TestMoscow()
+	{
+		String city = "moscow";
+		//base url
+		RestAssured.baseURI = "https://restcountries.com/v3.1/capital/";
+				
+		//Request object
+		RequestSpecification httprequest= RestAssured.given();
+		//response object
+		Response response = httprequest.request(Method.GET,city);
+		String responseBody = response.getBody().asString();
+		
+		Assert.assertEquals(responseBody.contains("Russia"),true);
+		
+	
 }
 }
