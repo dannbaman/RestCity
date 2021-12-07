@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -94,6 +95,44 @@ public class TC001_Demo1_Get_City {
 		String responseBody = response.getBody().asString();
 		
 		Assert.assertEquals(responseBody.contains("Russia"),true);
+		
+	
+}
+	@Test(priority = 4)
+	public void  RegisterPostMethod()
+	{
+		//base url
+		RestAssured.baseURI = "https://restapi.com/customer";
+				
+		//Request object
+		RequestSpecification httprequest= RestAssured.given();
+		//Request payload sending along with post request
+		JSONObject requestParams = new JSONObject();
+		requestParams.put("FirstName", "Johnsss222");
+		requestParams.put("LastName", "dsdsd");
+		requestParams.put("UserName", "fdf");
+		requestParams.put("Password", "adsd");
+		requestParams.put("Email", "sdsds@gmail.com");
+		httprequest.header("Content-Type","application/json");
+		
+		httprequest.body(requestParams.toJSONString());//ATTACH DATA to the request
+		
+		//Response object
+		Response response = httprequest.request(Method.POST,"/register");
+		
+		//print response in console
+		String responseBody = response.getBody().asString();
+		System.out.println("response is " + responseBody);
+		
+		//status code validation
+		int statusCode = response.getStatusCode();
+		System.out.println("status code is " + statusCode);
+		Assert.assertEquals(statusCode, 201);
+		
+		String successCode = response.jsonPath().get("SuccessCode");
+		
+		Assert.assertEquals(successCode, "OPERATION_SUCCESS");
+		
 		
 	
 }

@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TC001_Demo1_Get_City">
+      <class name="TC002_Get_Request">
         <methods>
-          <include name="getCityNegative"/>
+          <include name="googleMapTest"/>
         </methods>
-      </class> <!-- TC001_Demo1_Get_City -->
+      </class> <!-- TC002_Get_Request -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
