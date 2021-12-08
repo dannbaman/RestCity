@@ -136,4 +136,21 @@ public class TC001_Demo1_Get_City {
 		
 	
 }
+	@Test(priority = 5)
+	public void  GetDemo()
+	{
+		String city = "moscow";
+		//base url
+		RestAssured.baseURI = "https://restcountries.com/v3.1/capital/";
+				
+		//Request object
+		RequestSpecification httprequest= RestAssured.given();
+		//response object
+		Response response = httprequest.request(Method.GET,city);
+		String responseBody = response.getBody().asString();
+		
+		Assert.assertEquals(responseBody.contains("Russia"),true);
+		
+	
+}
 }
