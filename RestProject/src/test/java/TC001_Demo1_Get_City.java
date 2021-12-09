@@ -93,8 +93,11 @@ public class TC001_Demo1_Get_City {
 		//response object
 		Response response = httprequest.request(Method.GET,city);
 		String responseBody = response.getBody().asString();
-		
+		System.out.println(responseBody);
 		Assert.assertEquals(responseBody.contains("Russia"),true);
+		JsonPath jsonpath=response.jsonPath();
+		System.out.println(jsonpath.get("tld"));
+		System.out.println(jsonpath.get("currencies[0]"));
 		
 	
 }
