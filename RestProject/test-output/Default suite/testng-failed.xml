@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TC002_Get_Request">
+      <class name="dataDrivenTesting.DataDrivenTest_AddNewEmployees">
         <methods>
-          <include name="googleMapTest"/>
+          <include name="postAddNewEmployees" invocation-numbers="0"/>
         </methods>
-      </class> <!-- TC002_Get_Request -->
+      </class> <!-- dataDrivenTesting.DataDrivenTest_AddNewEmployees -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
